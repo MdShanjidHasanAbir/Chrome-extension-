@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Form Auto-Filler</h2>
+        
+        <div class="file-upload">
+            <input type="file" id="csvFile" accept=".csv">
+            <button id="loadCsv">Load Custom CSV</button>
+        </div>
+        
+        <div id="emailList" class="email-list">
+            <p class="placeholder">Loading default data...</p>
+        </div>
+        
+        <div class="actions">
+            <button id="fillForm" disabled>Fill Form</button>
+            <button id="mapFields">Map Fields</button>
+        </div>
+        
+        <div id="status" class="status"></div>
+        
+        <div class="instructions">
+            <h3>Instructions:</h3>
+            <ul>
+                <li>Select an email from the list above</li>
+                <li>Click "Fill Form" to auto-fill the current page's form</li>
+                <li>The extension will automatically detect and fill:
+                    <ul>
+                        <li>Email fields</li>
+                        <li>Password and confirm password fields</li>
+                        <li>Username fields</li>
+                        <li>First name and last name fields</li>
+                        <li>Full name fields (will be split into first/last if needed)</li>
+                        <li>Other common form fields</li>
+                    </ul>
+                </li>
+                <li>You can manually click submit/confirm buttons</li>
+            </ul>
+        </div>
+    </div>
+    
+    <script src="libs/papaparse.min.js"></script>
+    <script src="popup.js"></script>
+</body>
+</html>
