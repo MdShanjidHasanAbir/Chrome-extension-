@@ -1,0 +1,14 @@
+{
+  "manifest_version": 3,
+  "name": "AI Studio Chat Clear Button",
+  "version": "1.0",
+  "description": "Adds a clear button to delete all chats in AI Studio chat container.",
+  "permissions": [],
+  "host_permissions": ["https://aistudio.google.com/*"],
+  "content_scripts": [
+    {
+      "matches": ["https://aistudio.google.com/*"],
+      "js": ["content.js"]
+    }
+  ]
+}
