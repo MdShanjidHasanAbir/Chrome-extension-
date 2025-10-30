@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Facebook Post Status Checker</title>
+  <link rel="stylesheet" href="styles.css">
+  <!-- Include SheetJS library -->
+  <script src="xlsx.full.min.js"></script>
+</head>
+<body>
+  <div class="container">
+    <h2>🚀 Facebook Post Status Checker</h2>
+    
+    <!-- Main control buttons - All in one row -->
+    <div class="button-group">
+      <button id="selectFileBtn" class="btn btn-primary">
+        <span class="btn-icon">📁</span>
+        <span class="btn-text">Select File</span>
+      </button>
+      
+      <button id="processBtn" class="btn btn-success hidden">
+        <span class="btn-icon">⚡</span>
+        <span class="btn-text">Process</span>
+      </button>
+      
+      <button id="saveBtn" class="btn btn-save hidden">
+        <span class="btn-icon">💾</span>
+        <span class="btn-text">Save</span>
+      </button>
+
+      <button id="downloadBtn" class="btn btn-download">
+        <span class="btn-icon">⬇️</span>
+        <span class="btn-text">Download</span>
+      </button>
+    </div>
+    
+    <!-- File info - Hidden completely from display -->
+    <div id="fileInfo" class="file-info hidden" style="display: none !important;">
+      <span class="file-label">Selected File:</span>
+      <span id="fileName" class="file-name"></span>
+    </div>
+    
+    <!-- Enhanced Progress section -->
+    <div id="progressSection" class="progress-section hidden">
+      <div class="progress-header">
+        <div class="progress-title">Processing Progress</div>
+      </div>
+      
+      <div class="progress-bar-container">
+        <div id="progressBar" class="progress-bar"></div>
+      </div>
+      
+      <div id="progressText" class="progress-text">Initializing...</div>
+      <div id="currentUrl" class="current-url"></div>
+      <div id="currentStatus" class="current-status">Ready to start</div>
+    </div>
+    
+    <!-- Status messages -->
+    <div id="statusMessage" class="status-message hidden"></div>
+    
+    <!-- Toggle button for statistics -->
+    <div id="statsToggleContainer" class="stats-toggle-container hidden">
+      <button id="statsToggleBtn" class="stats-toggle-btn">
+        <span class="toggle-icon">▼</span>
+        <span class="toggle-text">Show Results</span>
+      </button>
+    </div>
+    
+    <!-- Enhanced Statistics - Collapsible -->
+    <div id="statistics" class="statistics hidden collapsed">
+      <h3>📊 Processing Results</h3>
+      <div class="stats-grid">
+        <div class="stat-item">
+          <span class="stat-label">Total URLs:</span>
+          <span id="totalUrls" class="stat-value">0</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-label">✅ Published:</span>
+          <span id="publishedCount" class="stat-value">0</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-label">⏳ Pending:</span>
+          <span id="pendingCount" class="stat-value">0</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-label">❌ Declined:</span>
+          <span id="declinedCount" class="stat-value">0</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-label">🗑️ Removed:</span>
+          <span id="removedCount" class="stat-value">0</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-label">📝 Total Posts Found:</span>
+          <span id="totalPostsCount" class="stat-value">0</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <script src="popup.js"></script>
+</body>
+</html>

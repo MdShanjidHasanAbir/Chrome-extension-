@@ -1,0 +1,39 @@
+{
+    "manifest_version": 3,
+    "name": "Facebook Post Status Checker",
+    "version": "1.2.0",
+    "description": "Automatically check and update Facebook post statuses in your Excel file with column filtering",
+    "permissions": [
+      "tabs",
+      "scripting",
+      "activeTab",
+      "storage",
+      "windows"
+    ],
+    "host_permissions": [
+      "*://*.facebook.com/"
+    ],
+    "action": {
+      "default_icon": {
+        "16": "icon16.png",
+        "48": "icon48.png",
+        "128": "icon128.png"
+      }
+    },
+    "background": {
+      "service_worker": "background.js"
+    },
+    "content_scripts": [
+      {
+        "matches": ["*://*.facebook.com/*"],
+        "js": ["content.js"],
+        "run_at": "document_idle"
+      }
+    ],
+    "web_accessible_resources": [
+      {
+        "resources": ["xlsx.full.min.js"],
+        "matches": ["<all_urls>"]
+      }
+    ]
+  }
