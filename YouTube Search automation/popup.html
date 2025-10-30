@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="container">
+    <h2>YouTube Search Automation</h2>
+    
+    <div class="status-section">
+      <span id="status" class="status">Status: <span id="status-text">Stopped</span></span>
+      <button id="toggleBtn" class="toggle-btn">Start</button>
+    </div>
+    
+    <div class="add-keyword-section">
+      <input type="text" id="keywordInput" placeholder="Enter keyword..." />
+      <button id="addBtn" class="add-btn">Add</button>
+    </div>
+    
+    <div class="keywords-section">
+      <h3>Keywords (<span id="keywordCount">0</span>)</h3>
+      <div id="keywordsList" class="keywords-list"></div>
+    </div>
+    
+    <div class="info">
+      <p>⏱️ Searches every 5 minutes</p>
+      <p>📍 Works only on YouTube.com</p>
+    </div>
+  </div>
+  
+  <script src="popup.js"></script>
+</body>
+</html>

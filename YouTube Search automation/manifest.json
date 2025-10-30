@@ -1,0 +1,31 @@
+{
+    "manifest_version": 3,
+    "name": "YouTube Search Automation",
+    "version": "1.0",
+    "description": "Automate YouTube searches with custom keywords",
+    "permissions": [
+      "storage",
+      "tabs",
+      "scripting"
+    ],
+    "host_permissions": [
+      "https://www.youtube.com/*"
+    ],
+    "background": {
+      "service_worker": "background.js"
+    },
+    "content_scripts": [
+      {
+        "matches": ["https://www.youtube.com/*"],
+        "js": ["content.js"]
+      }
+    ],
+    "action": {
+      "default_popup": "popup.html",
+      "default_icon": {
+        "16": "download.png",
+        "48": "download (1).png",
+        "128": "download (2).png"
+      }
+    }
+  }
