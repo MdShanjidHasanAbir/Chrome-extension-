@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        width: 450px;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        background: #ffffff;
+        color: #2c3e50;
+        line-height: 1.4;
+      }
+
+      .container {
+        padding: 24px;
+        background: #ffffff;
+      }
+
+      .header {
+        border-bottom: 1px solid #e1e8ed;
+        padding-bottom: 16px;
+        margin-bottom: 20px;
+      }
+
+      h1 {
+        font-size: 18px;
+        font-weight: 600;
+        color: #1a202c;
+        margin: 0;
+      }
+
+      .subtitle {
+        font-size: 13px;
+        color: #718096;
+        margin-top: 4px;
+      }
+
+      .tabs {
+        display: flex;
+        gap: 8px;
+        margin-bottom: 20px;
+        border-bottom: 2px solid #e2e8f0;
+      }
+
+      .tab {
+        padding: 10px 16px;
+        background: none;
+        border: none;
+        border-bottom: 2px solid transparent;
+        color: #718096;
+        font-size: 14px;
+        font-weight: 500;
+        cursor: pointer;
+        margin-bottom: -2px;
+        transition: all 0.2s ease;
+      }
+
+      .tab:hover {
+        color: #2b6cb0;
+      }
+
+      .tab.active {
+        color: #2b6cb0;
+        border-bottom-color: #2b6cb0;
+      }
+
+      .tab-content {
+        display: none;
+      }
+
+      .tab-content.active {
+        display: block;
+      }
+
+      .input-group {
+        margin-bottom: 20px;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 6px;
+        font-weight: 500;
+        font-size: 14px;
+        color: #4a5568;
+      }
+
+      textarea {
+        width: 100%;
+        height: 100px;
+        padding: 12px;
+        border: 2px solid #e2e8f0;
+        border-radius: 6px;
+        font-size: 13px;
+        font-family: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace;
+        background: #ffffff;
+        color: #2d3748;
+        resize: vertical;
+        transition: border-color 0.2s ease;
+      }
+
+      input[type="text"],
+      input[type="url"] {
+        width: 100%;
+        padding: 10px 12px;
+        border: 2px solid #e2e8f0;
+        border-radius: 6px;
+        font-size: 13px;
+        background: #ffffff;
+        color: #2d3748;
+        transition: border-color 0.2s ease;
+      }
+
+      textarea:focus,
+      input[type="text"]:focus,
+      input[type="url"]:focus {
+        outline: none;
+        border-color: #4299e1;
+        box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.1);
+      }
+
+      textarea::placeholder,
+      input::placeholder {
+        color: #a0aec0;
+        font-style: italic;
+      }
+
+      .delay-group {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 20px;
+      }
+
+      .delay-group label {
+        margin: 0;
+        font-size: 14px;
+        color: #4a5568;
+        white-space: nowrap;
+      }
+
+      input[type="number"] {
+        width: 80px;
+        padding: 8px 10px;
+        border: 2px solid #e2e8f0;
+        border-radius: 6px;
+        background: #ffffff;
+        color: #2d3748;
+        font-size: 14px;
+        text-align: center;
+        transition: border-color 0.2s ease;
+      }
+
+      input[type="number"]:focus {
+        outline: none;
+        border-color: #4299e1;
+        box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.1);
+      }
+
+      .delay-hint {
+        font-size: 12px;
+        color: #718096;
+      }
+
+      button {
+        width: 100%;
+        padding: 12px 16px;
+        background: #2b6cb0;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        font-size: 14px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: background-color 0.2s ease;
+        margin-bottom: 12px;
+      }
+
+      button:hover:not(:disabled) {
+        background: #2c5282;
+      }
+
+      button:active:not(:disabled) {
+        background: #2a4365;
+      }
+
+      button:disabled {
+        background: #a0aec0;
+        cursor: not-allowed;
+      }
+
+      .secondary-button {
+        background: #48bb78;
+      }
+
+      .secondary-button:hover:not(:disabled) {
+        background: #38a169;
+      }
+
+      .secondary-button:active:not(:disabled) {
+        background: #2f855a;
+      }
+
+      .status {
+        text-align: center;
+        font-size: 12px;
+        min-height: 16px;
+        color: #4a5568;
+        padding: 8px;
+        border-radius: 4px;
+      }
+
+      .status.success {
+        color: #38a169;
+        background: #f0fff4;
+      }
+
+      .status.error {
+        color: #e53e3e;
+        background: #fff5f5;
+      }
+
+      .status.info {
+        color: #3182ce;
+        background: #ebf8ff;
+      }
+
+      .help-text {
+        font-size: 11px;
+        color: #a0aec0;
+        margin-top: 4px;
+        line-height: 1.3;
+      }
+
+      .keyboard-hint {
+        font-size: 11px;
+        color: #a0aec0;
+        text-align: center;
+        margin-top: 8px;
+        font-style: italic;
+      }
+
+      .info-box {
+        background: #ebf8ff;
+        border-left: 4px solid #3182ce;
+        padding: 12px;
+        margin-bottom: 16px;
+        border-radius: 4px;
+      }
+
+      .info-box-title {
+        font-weight: 600;
+        font-size: 13px;
+        color: #2c5282;
+        margin-bottom: 6px;
+      }
+
+      .info-box-text {
+        font-size: 12px;
+        color: #2d3748;
+        line-height: 1.4;
+      }
+
+      .info-box ul {
+        margin: 8px 0 0 20px;
+        font-size: 12px;
+        color: #2d3748;
+      }
+
+      .info-box li {
+        margin-bottom: 4px;
+      }
+
+      .checkbox-group {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 16px;
+      }
+
+      .checkbox-group input[type="checkbox"] {
+        width: 18px;
+        height: 18px;
+        cursor: pointer;
+      }
+
+      .checkbox-group label {
+        margin: 0;
+        cursor: pointer;
+        font-weight: 400;
+      }
+
+      .result-table {
+        max-height: 200px;
+        overflow-y: auto;
+        border: 1px solid #e2e8f0;
+        border-radius: 6px;
+        margin-top: 12px;
+      }
+
+      .result-row {
+        display: flex;
+        justify-content: space-between;
+        padding: 8px 12px;
+        border-bottom: 1px solid #e2e8f0;
+        font-size: 12px;
+      }
+
+      .result-row:last-child {
+        border-bottom: none;
+      }
+
+      .result-row .group-name {
+        flex: 1;
+        color: #4a5568;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      .result-row .state {
+        font-weight: 600;
+        margin-left: 12px;
+      }
+
+      .result-row .state.pending {
+        color: #d69e2e;
+      }
+
+      .result-row .state.published {
+        color: #38a169;
+      }
+
+      .result-row .state.declined {
+        color: #e53e3e;
+      }
+
+      .result-row .state.removed {
+        color: #718096;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h1>URL Opener & FB Post Checker</h1>
+        <div class="subtitle">Open URLs & check Facebook post states</div>
+      </div>
+
+      <div class="tabs">
+        <button class="tab active" data-tab="url-opener">URL Opener</button>
+        <button class="tab" data-tab="fb-checker">FB Post Checker</button>
+      </div>
+
+      <!-- URL Opener Tab -->
+      <div id="url-opener" class="tab-content active">
+        <div class="input-group">
+          <label for="urls">URLs</label>
+          <textarea
+            id="urls"
+            placeholder="https://example.com&#10;https://google.com&#10;facebook.com"
+          ></textarea>
+          <div class="help-text">
+            Enter one URL per line. Protocol (http/https) is optional.
+          </div>
+        </div>
+
+        <div class="delay-group">
+          <label for="delay">Delay:</label>
+          <input type="number" id="delay" value="1" min="0" max="10" step="0.5" />
+          <span class="delay-hint">seconds between tabs</span>
+        </div>
+
+        <button id="openUrls">Open URLs</button>
+        
+        <div class="keyboard-hint">Press Ctrl+Enter to open quickly</div>
+
+        <div id="status" class="status"></div>
+      </div>
+
+      <!-- FB Post Checker Tab -->
+      <div id="fb-checker" class="tab-content">
+        <div class="info-box">
+          <div class="info-box-title">How it works:</div>
+          <div class="info-box-text">
+            <ul>
+              <li>Enter Facebook group links ending with <code>/my_pending_content</code></li>
+              <li>Provide your Google Sheet URL</li>
+              <li>Click "Check & Update" to detect post states</li>
+              <li>States: Pending, Published, Declined, Removed</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="input-group">
+          <label for="fbUrls">Facebook Group URLs</label>
+          <textarea
+            id="fbUrls"
+            placeholder="https://www.facebook.com/groups/groupname/my_pending_content&#10;https://www.facebook.com/groups/another/my_pending_content"
+          ></textarea>
+          <div class="help-text">
+            Enter Facebook group /my_pending_content URLs (one per line)
+          </div>
+        </div>
+
+        <div class="input-group">
+          <label for="sheetUrl">Google Sheet URL</label>
+          <input
+            type="url"
+            id="sheetUrl"
+            placeholder="https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/edit"
+          />
+          <div class="help-text">
+            Sheet must have a "Post State" column and be publicly accessible
+          </div>
+        </div>
+
+        <div class="delay-group">
+          <label for="fbDelay">Delay:</label>
+          <input type="number" id="fbDelay" value="3" min="2" max="20" step="0.5" />
+          <span class="delay-hint">seconds for page load</span>
+        </div>
+
+        <div class="checkbox-group">
+          <input type="checkbox" id="autoClose" checked />
+          <label for="autoClose">Auto-close tabs after checking</label>
+        </div>
+
+        <button id="checkFbPosts" class="secondary-button">Check & Update Posts</button>
+
+        <div id="fbStatus" class="status"></div>
+
+        <div id="resultTable" class="result-table" style="display: none;"></div>
+      </div>
+    </div>
+
+    <script src="popup.js"></script>
+  </body>
+</html>
